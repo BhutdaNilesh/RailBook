@@ -1,0 +1,58 @@
+#search_bar{
+    margin : auto;
+    padding: 10px;
+    border : 3px solid black;
+    width : 60%;
+    height: 32%;
+    background-color: grey;
+    position: fixed;
+    top: 70px;
+    left: 280px;
+} 
+
+#search_heading{
+    position: relative;
+    left: 280px;
+}
+
+#originText{
+    position: relative;
+    top: 7px;
+    left: 20px;
+}
+
+#origin{
+    position: relative;
+    top: 7px;
+    left: 40px;
+}
+
+#destinationText{
+    position: relative;
+    top: 7px;
+    left: 100px;
+}
+
+#destination{
+    position: relative;
+    top: 7px;
+    left: 120px;
+}
+
+#dateText{
+    position: relative;
+    top: 22px;
+    left: 220px;
+}
+
+#date{
+    position: relative;
+    top: 22px;
+    left: 240px;
+}
+
+#submit{
+    position: relative;
+    top: 45px;
+    left: 330px;
+}
