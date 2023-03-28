@@ -41,12 +41,110 @@
                 <div class="type type-header"><h5>Seater</h5></div>
                 <div class="type type-info">Available seats<br> {{train.seater_seats}}</div>
             </div>
-            <button type="button" class="btn btn-primary" id="book-button">Book Now</button>
+            <button type="button" class="btn btn-primary" id="book-button" data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="bookNow()">Book Now</button>
           </div>
           <br>
     
     </div>
 
+    <!-- Scrollable modal -->
+
+    <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Book Ticket</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close()"></button>
+            </div>
+
+            <ng-container *ngIf="nextClicked == false; then journey_details; else passenger_details">
+
+            </ng-container>
+            <ng-template #journey_details>
+                <div class="modal-body">
+                  <div >
+                    <div style="display: flex;"><h5>Journey Details</h5></div>
+                    <div style="display: flex; justify-content: space-between;">
+                      <div id="ticket-train-name" style="width:40%;">
+                        <h6>Train Name : </h6>
+                      </div>
+                      <div id="ticket-train-no" style="width:30%;">
+                        <h6>Train No : </h6>
+                      </div>
+                    </div>
+                    <br>
+                    <div style="display: flex; justify-content: space-between;">
+                      <div  style="width:30%;">
+                        <h6>Boarding Station : </h6>
+                      </div>
+                      <div style="width:30%;">
+                        <h6>Destination Station : </h6>
+                      </div>
+                      <div  style="width:30%; ">
+                        <h6>Jouerney Date : </h6>
+                      </div>
+                    </div>
+                      
+                  </div>
+                  <br>
+                  <div style="display: flex; justify-content: space-around;">
+                    <div style="width:50%">
+                      <label style="margin-bottom: 5px"><b>Jouerney Class :</b></label>
+                      <select class="form-control" style="width: 60%">
+                      <option>AC</option>
+                      <option>Sleeper</option>
+                      <option>Seater</option>
+                      </select>
+                    </div>
+                    <div style="width:50%">
+                      <label style="margin-bottom: 5px"><b>No Of Passengers :</b></label>
+                      <select class="form-control" [(ngModel)]="no_Of_Passengers" style="width: 60%" >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      </select>
+                    </div>
+                  </div>     
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" (click)="nextButton()">Next</button>
+                </div>
+            </ng-template >
+            <ng-template #passenger_details>
+                  <div class="modal-body">
+                    <div>
+                      <div><h5>Passenger Details </h5></div>
+                      <div *ngFor="let i of passeneger_array">
+                        <p>Passenger {{i}}:</p>
+                        <form >
+                          <label for="passengerName">Name:</label>
+                          <input type="text" id="passengerName" name="passengerName" required>
+                        
+                          <label for="departureStation">Gender:</label>
+                          <input type="text" id="departureStation" name="departureStation" required>
+                        
+                          <label for="arrivalStation">Age:</label>
+                          <input type="text" id="arrivalStation" name="arrivalStation"  required>
+                        </form>
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Book</button>
+                  </div>
+            </ng-template>
+            <div class="modal-body">
+
+            </div>
+            
+
+          </div>
+        </div>
+      </div>
     
+
+
+      
     
     
