@@ -1,1 +1,50 @@
-<p>my-bookings works!</p>
+<h2>My Bookings</h2>
+<ul class="booking-list">
+  <li *ngFor="let booking of bookings" class="booking-item" [class.cancelled]="booking.cancelled">
+    <div class="booking-info">
+      <div class="booking-name">{{ booking.train_name }}</div>
+      <div class="booking-destination">{{ booking.source }} to {{booking.destination}}</div>
+      <div class="booking-date">{{ booking.date }}</div>
+    </div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal"
+      (click)="view(booking)"> View Booking
+      details </button>
+    <button *ngIf="!booking.cancelled" class="cancel-button" (click)="cancelBooking(booking.id)">Cancel</button>
+    <div *ngIf="booking.cancelled" class="cancelled-message">This booking has been cancelled</div>
+
+
+
+  </li>
+</ul>
+
+
+<!-- Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="bookingModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bookingModalLabel">Booking Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+      <div class="modal-body">
+        <h6>Journey Details:</h6>
+        <p>Source: {{ book.source}} </p>
+        <p>Destination: {{ book.destination }}</p>
+        <p>Date: {{ book.date }}</p>
+        <p>Train Name: {{ book.train_name }}</p>
+        <h6>Passenger Details:</h6>
+
+        <p>Name: {{ book.name }}</p>
+        <p>Age: {{ book.age }}</p>
+        <p>Gender: {{ book.gender}}</p>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

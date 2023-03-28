@@ -1,0 +1,87 @@
+.booking-list {
+    list-style: none;
+    margin: 2%;
+    padding: 0;
+    
+  }
+  
+  .booking-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #585555;
+    border-radius: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .booking-item.cancelled {
+    border-color: #f00;
+  }
+  
+  .booking-info {
+    flex: 1;
+  }
+  
+  .booking-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .booking-destination {
+    font-style: italic;
+    margin-bottom: 5px;
+  }
+  
+  .booking-date {
+    font-size: 0.8em;
+  }
+  
+  .cancel-button {
+    background-color: #f00;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .cancel-button:hover {
+    background-color: #d00;
+  }
+  
+  .cancelled-message {
+    font-style: italic;
+    color: #f00;
+    margin-left: 10px;
+  }
+  
+
+
+  /* Modal styles */
+.modal-header {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.modal-body {
+  font-size: 16px;
+}
+
+.modal-footer {
+  background-color: #f8f9fa;
+}
+
+.modal-footer button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.modal-footer button:hover {
+  background-color: #0062cc;
+  color: #fff;
+}
+
+
+h2{
+  margin: 2%;
+}
