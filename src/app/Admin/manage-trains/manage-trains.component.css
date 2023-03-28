@@ -1,0 +1,38 @@
+
+.forms_div{
+    /* margin-top: px; */
+    height: 500px;
+    width: 400px;
+    background-color: aliceblue;
+    border: 2px solid blue;
+    border-radius: 10px;
+
+}
+
+body{
+    background-image: linear-gradient(45deg,red,blue);
+    height:100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    border: 10px solid;
+    border-color: rgb(9, 202, 9);
+    margin-top: 50px;
+    margin-left: 50px;
+    
+    display: flex;
+    justify-content:space-around;
+    flex-wrap: wrap-reverse;
+    flex-direction: row;
+    /* height: 800px; */
+    
+}
+.flex-item{
+    background-color: brown;
+    border: 6px solid ;
+    height: 50px;
+    width: 1000px;
+}

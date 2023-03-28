@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./manage-trains.component.css']
 })
 export class ManageTrainsComponent {
-
+  nextClicked:boolean=false;
+  nextClick()
+  {
+    this.nextClicked=true;
+  }
+  back()
+  {
+    this.nextClicked=false;
+  }
 }

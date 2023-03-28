@@ -1,1 +1,148 @@
-<p>manage-trains works!</p>
+
+<body>
+  <ng-container
+    *ngIf="nextClicked == false; then displayFirstForm; else displaySecondForm"
+  >
+  </ng-container>
+  <ng-template #displayFirstForm>
+    <div
+      class="forms_div"
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+      "
+    >
+      <div style="width: 90%">
+        <label style="margin-bottom: 5px">Train No</label>
+        <br />
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Train Number"
+        />
+      </div>
+      <div style="width: 90%">
+        <label style="margin-bottom: 5px">Train Name</label>
+        <br />
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Train Name"
+        />
+      </div>
+      <div style="width: 90%">
+        <label style="margin-bottom: 5px">From</label>
+        <select class="form-control" style="width: 100%">
+          <option>Pune</option>
+          <option>Hyderabad</option>
+          <option>Goa</option>
+          <option>Mumbai</option>
+        </select>
+      </div>
+      <div style="width: 90%">
+        <label style="margin-bottom: 5px">To</label>
+        <select class="form-control" style="width: 100%">
+          <option>Pune</option>
+          <option>Hyderabad</option>
+          <option>Goa</option>
+          <option>Mumbai</option>
+        </select>
+      </div>
+      <div style="width: 90%">
+        <label for="appt">Arrival time</label><br />
+        <input type="time" class="form-control" value="22:00" />
+      </div>
+      <div style="width: 90%">
+        <label for="appt">Departure time</label><br />
+        <input type="time" class="form-control" value="22:00" />
+      </div>
+   
+      <button type="button" class="btn btn-primary" (click)="(nextClick())">
+        Next ->
+      </button>
+    </div></ng-template
+  >
+  <ng-template #displaySecondForm>
+    <div
+      class="forms_div"
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+      "
+    >
+    <div style="width: 90%">
+        <label>Date</label><br />
+        <input
+          type="date"
+          class="form-control"
+          name="date"
+          value="2018-01-01"
+          min="2017-01-01"
+          max="2019-01-01"
+          style="width: 100%"
+        />
+      </div>
+      <div style="width: 90%">
+        <label style="margin-bottom: 5px">Total seats</label>
+        <br />
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Enter Number of seats"
+          min="1"
+          max="60"
+          value="60"
+
+        />
+      </div>
+      <div style="width: 90%">
+        <label style="margin-bottom: 5px">AC seats</label>
+        <br />
+        <input
+        type="number"
+        class="form-control"
+        placeholder="Enter Number of AC seats"
+        min="1"
+        max="60"
+        value="60"
+        />
+      </div>
+      <div style="width: 90%">
+        <label style="margin-bottom: 5px">Non AC seats</label>
+        <br />
+        <input
+        type="number"
+        class="form-control"
+        placeholder="Enter Number of AC seats"
+        min="1"
+        max="60"
+        value="60"
+        />
+      </div>
+      <div style="width: 90%">
+        <label style="margin-bottom: 5px">Sleeper seats</label>
+        <br />
+        <input
+        type="number"
+        class="form-control"
+        placeholder="Enter Number of AC seats"
+        min="1"
+        max="60"
+        value="60"
+        />
+      </div>
+  
+    
+      
+      <div style="display: flex; justify-content: space-evenly; width: 90%;">
+        <button type="button" class="btn btn-primary" style="margin-left: 0px;" (click)="back()"><-Back</button>
+        <button type="button" class="btn btn-primary">Add</button>
+      </div>
+      
+    </div>
+  </ng-template>
+</body>
