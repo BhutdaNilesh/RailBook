@@ -8,6 +8,7 @@ import { ManageTrainsComponent } from './Admin/manage-trains/manage-trains.compo
 import { BookTicketComponent } from './User/book-ticket/book-ticket.component'; 
 import { MyBookingsComponent } from './User/my-bookings/my-bookings.component'; 
 import { HomeComponent } from './Shared/home/home.component';
+import { AllTrainsComponent } from './Admin/all-trains/all-trains.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HomeComponent } from './Shared/home/home.component';
     ManageTrainsComponent,
     BookTicketComponent,
     MyBookingsComponent,
-    HomeComponent
+    HomeComponent,
+    AllTrainsComponent
   ],
   imports: [
     BrowserModule,

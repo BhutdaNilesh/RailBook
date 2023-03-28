@@ -1,0 +1,95 @@
+body{
+    background-image: linear-gradient(45deg,red,blue);
+    width: 100%;
+    height:100%;
+    display: flex;
+}
+.card-header
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+#train_info_item{
+    border: 3px solid #0d6efd   ;
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
+    background-color: cornflowerblue;
+  
+}
+
+
+#seats_div{
+   
+    width: 60%;
+    height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#class_cards{
+    border: 2px solid #0d6efd;
+    height: 80px;
+    width: 15%;
+    border-radius: 5px;
+    
+
+}
+#class_cards_header
+{
+    background-color: cornflowerblue;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 28px;
+}
+#class_cards_body{
+    display: flex;
+     justify-content: center;
+      align-items: center; 
+      padding-top: 10px;
+}
+.card-body{
+    display: flex;
+    justify-content: space-around;
+}
+.container{
+    width: 85%;
+    
+    border-radius: 15px;
+    margin-top: 110px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap-reverse;
+    height: fit-content;
+}
+.card{
+    width:90%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border:2px solid rgb(201, 52, 52);;
+    border-radius: 25px;
+}
+
+/* .container{
+    margin-top: 150px;
+    display: flex;
+    border: 5px solid blueviolet;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    justify-content: space-between;
+    
+    background-image: linear-gradient(45deg,red,blue);
+}
+
+.items{
+    width: 100%;
+    border: 2px solid black;
+
+}
+.card{
+    margin-top: 50px;
+} */
