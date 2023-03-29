@@ -8,14 +8,35 @@ import { Component, NgIterable } from '@angular/core';
 })
 export class BookTicketComponent {
 
+  origin : any;
+  destination : any;
+  date: any;
+
+  search(){
+    this.origin = this.origin.toUpperCase();
+    this.destination = this.destination.toUpperCase()
+    alert(this.origin + this.destination + this.date);
+
+    for(let tr of this.trains){
+      if(tr.origin == this.origin && tr.destination == this.destination){
+        this.searched_trains.push(tr);
+        alert(tr.train_name);
+      }
+    }
+    
+  }
+
   trains = [
-    {train_number : 1000003, train_name : "RAJDHANI EXPRESS", departure_time : "05:00 AM",origin : "PUNE", destination_time:"05:00 PM", destination:"NAGPUR", ac_seats: 50, sleeper_seats: 60, seater_seats: 70},
-    {train_number : 1000002, train_name : "SAHYADRI EXPRESS", departure_time : "05:00 AM",origin : "MUMBAI", destination_time:"05:00 PM", destination:"KOLHAPUR", ac_seats: 50, sleeper_seats: 60, seater_seats: 70}
+    {train_number : 1000003, train_name : "RAJDHANI EXPRESS", date : "2023-03-29", departure_time : "05:00 AM",origin : "PUNE", destination_time:"05:00 PM", destination:"NAGPUR", ac_seats: 50, sleeper_seats: 60, seater_seats: 70},
+    {train_number : 1000002, train_name : "SAHYADRI EXPRESS", date : "2023-03-29", departure_time : "05:00 AM",origin : "MUMBAI", destination_time:"05:00 PM", destination:"KOLHAPUR", ac_seats: 50, sleeper_seats: 60, seater_seats: 70}
   ]
 
+  searched_trains:any = [];
 
-  bookNow(){
-    
+  booking_train : any ;
+
+  bookNow(train:any){
+    this.booking_train = train;
     
   }
 
@@ -38,5 +59,5 @@ export class BookTicketComponent {
     this.no_Of_Passengers = 1;
   }
 
-  selectedValue: String = "";
+  
 }

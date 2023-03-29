@@ -3,22 +3,22 @@
         <h5 id="search_heading">Book Train Ticket</h5>
         <form >
             <label for="origin" id="originText" >Origin Station:</label>
-            <input type="text" id="origin" name="origin" >
+            <input type="text" id="origin" name="origin" [(ngModel)]="origin" onkeydown="this.value = this.value.toUpperCase();"onkeyup="this.value = this.value.toUpperCase();">
           
             <label for="destination" id="destinationText">Destination Station:</label>
-            <input type="text" id="destination" name="destination" >
+            <input type="text" id="destination" name="destination" [(ngModel)]="destination" onkeyup="this.value = this.value.toUpperCase();">
             <br>
           
             <label for="date" id="dateText">Travel Date:</label>
-            <input type="date" id="date" name="date" >
+            <input type="date" id="date" name="date" [(ngModel)]="date">
             <br>
           
-            <button type="submit" id="submit">Search</button>
+            <button type="submit" id="submit" (click)="search()">Search</button>
           </form>
     </div>
     
     
-    <div id="available-trains" *ngFor ="let train of trains">
+    <div id="available-trains" *ngFor ="let train of searched_trains">
     
         <div id="train_card">
             <div id = "train_info">
@@ -41,7 +41,7 @@
                 <div class="type type-header"><h5>Seater</h5></div>
                 <div class="type type-info">Available seats<br> {{train.seater_seats}}</div>
             </div>
-            <button type="button" class="btn btn-primary" id="book-button" data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="bookNow()">Book Now</button>
+            <button type="button" class="btn btn-primary" id="book-button" data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="bookNow(train)">Book Now</button>
           </div>
           <br>
     
@@ -65,23 +65,23 @@
                   <div >
                     <div style="display: flex;"><h5>Journey Details</h5></div>
                     <div style="display: flex; justify-content: space-between;">
-                      <div id="ticket-train-name" style="width:40%;">
-                        <h6>Train Name : </h6>
+                      <div id="ticket-train-name" style="width:45%;">
+                        <b>Train Name : </b> {{booking_train.train_name}}
                       </div>
-                      <div id="ticket-train-no" style="width:30%;">
-                        <h6>Train No : </h6>
+                      <div id="ticket-train-no" style=" width:30%;">
+                        <b>Train No : </b> {{booking_train.train_number}}
                       </div>
                     </div>
                     <br>
                     <div style="display: flex; justify-content: space-between;">
                       <div  style="width:30%;">
-                        <h6>Boarding Station : </h6>
+                        <b>Boarding Station : </b> {{booking_train.origin}}
                       </div>
                       <div style="width:30%;">
-                        <h6>Destination Station : </h6>
+                        <b>Destination Station : </b> {{booking_train.destination}}
                       </div>
                       <div  style="width:30%; ">
-                        <h6>Jouerney Date : </h6>
+                        <b>Journey Date : </b> {{booking_train.date}}
                       </div>
                     </div>
                       
@@ -89,7 +89,7 @@
                   <br>
                   <div style="display: flex; justify-content: space-around;">
                     <div style="width:50%">
-                      <label style="margin-bottom: 5px"><b>Jouerney Class :</b></label>
+                      <label style="margin-bottom: 5px"><b>Journey Class :</b></label>
                       <select class="form-control" style="width: 60%">
                       <option>AC</option>
                       <option>Sleeper</option>
@@ -104,7 +104,8 @@
                       <option value="3">3</option>
                       </select>
                     </div>
-                  </div>     
+                  </div> 
+                  <br>    
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-primary" (click)="nextButton()">Next</button>
@@ -115,20 +116,25 @@
                     <div>
                       <div><h5>Passenger Details </h5></div>
                       <div *ngFor="let i of passeneger_array">
-                        <p>Passenger {{i}}:</p>
-                        <form >
-                          <label for="passengerName">Name:</label>
-                          <input type="text" id="passengerName" name="passengerName" required>
-                        
-                          <label for="departureStation">Gender:</label>
-                          <input type="text" id="departureStation" name="departureStation" required>
-                        
-                          <label for="arrivalStation">Age:</label>
-                          <input type="text" id="arrivalStation" name="arrivalStation"  required>
+                        <p><b>Passenger {{i}}:</b></p>
+                        <form style="justify-content: space-between; display: flex;">
+                          <div >
+                            <label for="passengerName">Name: </label>
+                            <input type="text" id="passengerName" name="passengerName" required>
+                          </div>
+                          <div>
+                            <label for="departureStation">Gender: </label>
+                            <input type="text" id="departureStation" name="departureStation" required>
+                          </div>
+                          <div>
+                            <label for="arrivalStation">Age: </label>
+                            <input type="text" id="arrivalStation" name="arrivalStation"  required>
+                          </div>
                         </form>
                         <br>
                       </div>
                     </div>
+                    <br>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-primary">Book</button>
