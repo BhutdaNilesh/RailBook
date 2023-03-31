@@ -18,9 +18,10 @@ export class BookTicketComponent {
     alert(this.origin + this.destination + this.date);
 
     for(let tr of this.trains){
+      console.log(tr.train_name);
       if(tr.origin == this.origin && tr.destination == this.destination){
         this.searched_trains.push(tr);
-        alert(tr.train_name);
+        alert(this.searched_trains[0].train_name);
       }
     }
     
@@ -43,6 +44,7 @@ export class BookTicketComponent {
   j_Class : String = "AC";
   no_Of_Passengers : number = 1;
   passeneger_array: any  = [];
+  
 
   nextClicked:boolean = false;
 

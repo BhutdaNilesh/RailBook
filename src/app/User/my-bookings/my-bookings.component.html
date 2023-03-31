@@ -1,16 +1,17 @@
 <h2>My Bookings</h2>
 <ul class="booking-list">
-  <li *ngFor="let booking of bookings" class="booking-item" [class.cancelled]="booking.cancelled">
+  <!-- [class.cancelled]="booking.cancelled -->
+  <li *ngFor="let booking of newBooking" class="booking-item" >
     <div class="booking-info">
-      <div class="booking-name">{{ booking.train_name }}</div>
-      <div class="booking-destination">{{ booking.source }} to {{booking.destination}}</div>
-      <div class="booking-date">{{ booking.date }}</div>
+      <div class="booking-name">{{ booking.booking_id }}</div>
+      <div class="booking-destination">{{ booking.user_id }} to {{booking.train_id}}</div>
+      <div class="booking-date">{{ booking.passengerList }}</div>
     </div>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal"
       (click)="view(booking)"> View Booking
       details </button>
-    <button *ngIf="!booking.cancelled" class="cancel-button" (click)="cancelBooking(booking.id)">Cancel</button>
-    <div *ngIf="booking.cancelled" class="cancelled-message">This booking has been cancelled</div>
+    <!-- <button *ngIf="!booking.cancelled" class="cancel-button" (click)="cancelBooking(booking.id)">Cancel</button> -->
+    <!-- <div *ngIf="booking.cancelled" class="cancelled-message">This booking has been cancelled</div> -->
 
 
 

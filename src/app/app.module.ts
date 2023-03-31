@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { BookTicketComponent } from './User/book-ticket/book-ticket.component';
 import { MyBookingsComponent } from './User/my-bookings/my-bookings.component'; 
 import { HomeComponent } from './Shared/home/home.component';
 import { AllTrainsComponent } from './Admin/all-trains/all-trains.component';
+import { BookingService } from './User/Rest/booking.service';
 
 @NgModule({
   declarations: [
@@ -17,14 +19,16 @@ import { AllTrainsComponent } from './Admin/all-trains/all-trains.component';
     BookTicketComponent,
     MyBookingsComponent,
     HomeComponent,
-    AllTrainsComponent
+    AllTrainsComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [BookingService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
