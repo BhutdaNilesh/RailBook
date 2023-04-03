@@ -1,19 +1,15 @@
 <h2>My Bookings</h2>
 <ul class="booking-list">
   <!-- [class.cancelled]="booking.cancelled -->
-  <li *ngFor="let booking of newBooking" class="booking-item" >
+  <li *ngFor="let booking of newBooking; let i=index" class="booking-item">
     <div class="booking-info">
-      <div class="booking-name">{{ booking.booking_id }}</div>
-      <div class="booking-destination">{{ booking.user_id }} to {{booking.train_id}}</div>
-      <div class="booking-date">{{ booking.passengerList }}</div>
+      <div class="booking-name">{{ train[i].name }}</div>
+      <div class="booking-destination">{{ train[i].source_station }} to {{train[i].destination_station}}</div>
+
     </div>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal"
-      (click)="view(booking)"> View Booking
+      (click)="view(booking,i)"> View Booking
       details </button>
-    <!-- <button *ngIf="!booking.cancelled" class="cancel-button" (click)="cancelBooking(booking.id)">Cancel</button> -->
-    <!-- <div *ngIf="booking.cancelled" class="cancelled-message">This booking has been cancelled</div> -->
-
-
 
   </li>
 </ul>
@@ -31,20 +27,25 @@
       </div>
       <div class="modal-body">
         <h6>Journey Details:</h6>
-        <p>Source: {{ book.source}} </p>
-        <p>Destination: {{ book.destination }}</p>
-        <p>Date: {{ book.date }}</p>
-        <p>Train Name: {{ book.train_name }}</p>
+        <p>Train Name: {{ train[ind].name }}</p>
+        <p>Source: {{ train[ind].source_station}} </p>
+        <p>Destination: {{ train[ind].destination_station }}</p>
+        <p>Date: {{ train[ind].departure_date }}</p>
+        <p>Time: {{ train[ind].departure_time }}</p>
+        <hr>
         <h6>Passenger Details:</h6>
 
-        <p>Name: {{ book.name }}</p>
-        <p>Age: {{ book.age }}</p>
-        <p>Gender: {{ book.gender}}</p>
+        <div *ngFor="let p of pass[ind]">
+          <p>Name: {{ p.name }}</p>
+          <p>Age: {{ p.age }}</p>
+          <p>Gender: {{ p.gender}}</p>
+          <hr>
+        </div>
 
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelTicket()">Cancel</button>
       </div>
     </div>
   </div>
