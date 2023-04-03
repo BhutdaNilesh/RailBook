@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Passenger } from './passenger';
+import { Booking } from '../book-ticket/booking';
+
 
 @Injectable({
   providedIn: 'root',
@@ -23,5 +26,24 @@ export class BookingService {
 
   public deleteBooking(id:number){
      return this.http.delete(this.API + '/deleteTicket/' + id)
+  }
+
+  // Storing passenger data
+  public registerPassenger(pass : Passenger){
+    let strURL : string = this.API + '/registerPassenger' ;
+    return this.http.post(strURL, pass);
+  }
+
+  // stroing ticket data
+  public registerBooking(ticket : Booking){
+    let strURL : string = this.API + '/bookTicket' ;
+    
+    console.log(ticket);
+    
+    return this.http.post(strURL, ticket);
+  }
+
+  public searchTrains(origin:string, destination:string, date:any){
+    return this.http.get(this.API + '/getTrainSD/' + origin + '/' + destination + '/' + date);
   }
 }

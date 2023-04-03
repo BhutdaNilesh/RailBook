@@ -22,24 +22,24 @@
     
         <div id="train_card">
             <div id = "train_info">
-                <p id="train_number"> {{train.train_number}}</p> 
+                <p id="train_number"> {{train.train_id}}</p> 
                 <h4 id = "train_name"> {{train.train_name}}</h4>
                 <p id="departure_time">{{train.departure_time}}</p>
-                <h5 id="source">{{train.origin}}</h5>
-                <p id="destination_time">{{train.destination_time}}</p>
-                <h5 id="destination_place">{{train.destination}}</h5>
+                <h5 id="source">{{train.source_station}}</h5>
+                <p id="destination_time">{{train.arrival_time}}</p>
+                <h5 id="destination_place">{{train.destination_station}}</h5>
             </div>
             <div id="ac-seats">
                 <div class="type type-header"><h5>AC</h5></div>
-                <div class="type type-info">Available seats<br> {{train.ac_seats}}</div>
+                <div class="type type-info">Available seats<br> {{train.no_of_AC}}</div>
             </div>
             <div id="sleeper-seats">
                 <div class="type type-header"><h5>Sleeper</h5></div>
-                <div class="type type-info">Available seats<br> {{train.sleeper_seats}}</div>
+                <div class="type type-info">Available seats<br> {{train.no_of_Seater}}</div>
             </div>
             <div id="seater-seats">
                 <div class="type type-header"><h5>Seater</h5></div>
-                <div class="type type-info">Available seats<br> {{train.seater_seats}}</div>
+                <div class="type type-info">Available seats<br> {{train.no_of_Sleeper}}</div>
             </div>
             <button type="button" class="btn btn-primary" id="book-button" data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="bookNow(train)">Book Now</button>
           </div>
@@ -69,19 +69,19 @@
                         <b>Train Name : </b> {{booking_train.train_name}}
                       </div>
                       <div id="ticket-train-no" style=" width:30%;">
-                        <b>Train No : </b> {{booking_train.train_number}}
+                        <b>Train No : </b> {{booking_train.train_id}}
                       </div>
                     </div>
                     <br>
                     <div style="display: flex; justify-content: space-between;">
                       <div  style="width:30%;">
-                        <b>Boarding Station : </b> {{booking_train.origin}}
+                        <b>Boarding Station : </b> {{booking_train.source_station}}
                       </div>
                       <div style="width:30%;">
-                        <b>Destination Station : </b> {{booking_train.destination}}
+                        <b>Destination Station : </b> {{booking_train.destination_station}}
                       </div>
                       <div  style="width:30%; ">
-                        <b>Journey Date : </b> {{booking_train.date}}
+                        <b>Journey Date : </b> {{booking_train.departure_date}}
                       </div>
                     </div>
                       
@@ -90,7 +90,7 @@
                   <div style="display: flex; justify-content: space-around;">
                     <div style="width:50%">
                       <label style="margin-bottom: 5px"><b>Journey Class :</b></label>
-                      <select class="form-control" style="width: 60%">
+                      <select class="form-control" [(ngModel)]="j_Class" style="width: 60%">
                       <option>AC</option>
                       <option>Sleeper</option>
                       <option>Seater</option>
@@ -115,20 +115,20 @@
                   <div class="modal-body">
                     <div>
                       <div><h5>Passenger Details </h5></div>
-                      <div *ngFor="let i of passeneger_array">
-                        <p><b>Passenger {{i}}:</b></p>
+                      <div *ngFor="let ind of passList; let i = index">
+                        <p><b>Passenger {{i+1}}:</b></p>
                         <form style="justify-content: space-between; display: flex;">
                           <div >
                             <label for="passengerName">Name: </label>
-                            <input type="text" id="passengerName" name="passengerName" required>
+                            <input type="text" id="passengerName" name="passengerName" [(ngModel)]="ind.name" required>
                           </div>
                           <div>
                             <label for="departureStation">Gender: </label>
-                            <input type="text" id="departureStation" name="departureStation" required>
+                            <input type="text" id="departureStation" name="departureStation" [(ngModel)]="ind.gender" required>
                           </div>
                           <div>
                             <label for="arrivalStation">Age: </label>
-                            <input type="text" id="arrivalStation" name="arrivalStation"  required>
+                            <input type="number" id="arrivalStation" name="arrivalStation"  [(ngModel)]="ind.age" required>
                           </div>
                         </form>
                         <br>
@@ -137,7 +137,7 @@
                     <br>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Book</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" (click)="book()">Book</button>
                   </div>
             </ng-template>
             <div class="modal-body">
