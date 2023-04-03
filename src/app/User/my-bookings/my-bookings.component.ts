@@ -32,6 +32,7 @@ export class MyBookingsComponent implements OnInit {
     
           this.bookingServ.getTrain(trainId).subscribe((train_data: any) => {
             this.train.push(train_data);
+            console.log(train_data);
           });
     
           let passData: any[] = []; // move the initialization here
@@ -45,8 +46,14 @@ export class MyBookingsComponent implements OnInit {
           }
           this.pass.push(passData); // push the passData array here
         }
+<<<<<<< Updated upstream
         console.log(this.pass)
         console.log(this.newBooking)
+=======
+        console.log(this.pass);
+        console.log(this.newBooking);
+        console.log(this.train)
+>>>>>>> Stashed changes
       },
       
       (err) => {

@@ -1,211 +1,52 @@
 <body>
   <div class="container">
-    <div class="card">
+    <div class="card"  *ngFor="let train of trainArr">
       <div class="card-header">
-        <p id="train_info_item">Train_name</p>
-        <p id="train_info_item">Pune to Mumbai</p>
-        <p id="train_info_item">10.00 to 20.00</p>
-        <p id="train_info_item">Train_id</p>
+              
+          <p id="train_info_item">{{train.train_name}}</p>
+          <p id="train_info_item">{{train.source_station}} to {{train.destination_station}}</p>
+          <p id="train_info_item">{{train.departure_date}} - ({{train.departure_time}}) to  {{train.arrival_date}} - ({{train.arrival_time}})</p>
+          <p id="train_info_item">{{train.train_id}}</p>
+        
+        
       </div>
       <div class="card-body">
         <div id="seats_div">
           <div id="class_cards">
-            <div id="class_cards_header" >
-              <h6 style="color: azure;">AC</h6>
+            <div id="class_cards_header">
+              <h6 style="color: azure">AC</h6>
             </div>
             <div id="class_cards_body">
-              <h5 style="justify-content: center;"> 50</h5>
+              <h5 style="justify-content: center">{{train.no_of_AC}}</h5>
             </div>
-            <div>
-              
-            </div>
+            <div></div>
           </div>
           <div id="class_cards">
-            <div id="class_cards_header" >
-              <h6 style="color: azure;">Seater</h6>
+            <div id="class_cards_header">
+              <h6 style="color: azure">Seater</h6>
             </div>
             <div id="class_cards_body">
-              <h5 style="justify-content: center;"> 50</h5>
+              <h5 style="justify-content: center">{{train.no_of_Seater}}</h5>
             </div>
-            <div>
-              
-            </div>
+            <div></div>
           </div>
           <div id="class_cards">
-            <div id="class_cards_header" >
-              <h6 style="color: azure;">Sleeper</h6>
+            <div id="class_cards_header">
+              <h6 style="color: azure">Sleeper</h6>
             </div>
             <div id="class_cards_body">
-              <h5 style="justify-content: center;"> 50</h5>
+              <h5 style="justify-content: center">{{train.no_of_Sleeper}}</h5>
             </div>
-            <div>
-              
-            </div>
+            <div></div>
           </div>
-          
+
           <div></div>
           <div></div>
         </div>
-        <div style="justify-content: center; align-items: end; display:flex; ;">
-          <button type="button" class="btn btn-danger" >Cancel</button>
+        <div style="justify-content: center; align-items: end; display: flex ;">
+          <button type="button" class="btn btn-danger" (click)="cancelTrain(train.train_id)">Cancel</button>
         </div>
-       
-      </div>
-    </div><div class="card">
-      <div class="card-header">
-        <p id="train_info_item">Train_name</p>
-        <p id="train_info_item">Pune to Mumbai</p>
-        <p id="train_info_item">10.00 to 20.00</p>
-        <p id="train_info_item">Train_id</p>
-      </div>
-      <div class="card-body">
-        <div id="seats_div">
-          <div id="class_cards">
-            <div id="class_cards_header" >
-              <h6 style="color: azure;">AC</h6>
-            </div>
-            <div id="class_cards_body">
-              <h5 style="justify-content: center;"> 50</h5>
-            </div>
-            <div>
-              
-            </div>
-          </div>
-          <div id="class_cards">
-            <div id="class_cards_header" >
-              <h6 style="color: azure;">Seater</h6>
-            </div>
-            <div id="class_cards_body">
-              <h5 style="justify-content: center;"> 50</h5>
-            </div>
-            <div>
-              
-            </div>
-          </div>
-          <div id="class_cards">
-            <div id="class_cards_header" >
-              <h6 style="color: azure;">Sleeper</h6>
-            </div>
-            <div id="class_cards_body">
-              <h5 style="justify-content: center;"> 50</h5>
-            </div>
-            <div>
-              
-            </div>
-          </div>
-          
-          <div></div>
-          <div></div>
-        </div>
-        <div style="justify-content: center; align-items: end; display:flex; ;">
-          <button type="button" class="btn btn-danger">Cancel</button>
-        </div>
-       
-      </div>
-    </div><div class="card">
-      <div class="card-header">
-        <p id="train_info_item">Train_name</p>
-        <p id="train_info_item">Pune to Mumbai</p>
-        <p id="train_info_item">10.00 to 20.00</p>
-        <p id="train_info_item">Train_id</p>
-      </div>
-      <div class="card-body">
-        <div id="seats_div">
-          <div id="class_cards">
-            <div id="class_cards_header" >
-              <h6 style="color: azure;">AC</h6>
-            </div>
-            <div id="class_cards_body">
-              <h5 style="justify-content: center;"> 50</h5>
-            </div>
-            <div>
-              
-            </div>
-          </div>
-          <div id="class_cards">
-            <div id="class_cards_header" >
-              <h6 style="color: azure;">Seater</h6>
-            </div>
-            <div id="class_cards_body">
-              <h5 style="justify-content: center;"> 50</h5>
-            </div>
-            <div>
-              
-            </div>
-          </div>
-          <div id="class_cards">
-            <div id="class_cards_header" >
-              <h6 style="color: azure;">Sleeper</h6>
-            </div>
-            <div id="class_cards_body">
-              <h5 style="justify-content: center;"> 50</h5>
-            </div>
-            <div>
-              
-            </div>
-          </div>
-          
-          <div></div>
-          <div></div>
-        </div>
-        <div style="justify-content: center; align-items: end; display:flex; ;">
-          <button type="button" class="btn btn-danger">Cancel</button>
-        </div>
-       
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <p id="train_info_item">Train_name</p>
-        <p id="train_info_item">Pune to Mumbai</p>
-        <p id="train_info_item">10.00 to 20.00</p>
-        <p id="train_info_item">Train_id</p>
-      </div>
-      <div class="card-body">
-        <div id="seats_div">
-          <div id="class_cards">
-            <div id="class_cards_header" >
-              <h6 style="color: azure;">AC</h6>
-            </div>
-            <div id="class_cards_body">
-              <h5 style="justify-content: center;"> 50</h5>
-            </div>
-            <div>
-              
-            </div>
-          </div>
-          <div id="class_cards">
-            <div id="class_cards_header" >
-              <h6 style="color: azure;">Seater</h6>
-            </div>
-            <div id="class_cards_body">
-              <h5 style="justify-content: center;"> 50</h5>
-            </div>
-            <div>
-              
-            </div>
-          </div>
-          <div id="class_cards">
-            <div id="class_cards_header" >
-              <h6 style="color: azure;">Sleeper</h6>
-            </div>
-            <div id="class_cards_body">
-              <h5 style="justify-content: center;"> 50</h5>
-            </div>
-            <div>
-              
-            </div>
-          </div>
-          
-          <div></div>
-          <div></div>
-        </div>
-        <div style="justify-content: center; align-items: end; display:flex; ;">
-          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Cncel</button>
-        </div>
-       
       </div>
     </div>
   </div>
 </body>
-

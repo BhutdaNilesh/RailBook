@@ -46,4 +46,8 @@ export class BookingService {
   public searchTrains(origin:string, destination:string, date:any){
     return this.http.get(this.API + '/getTrainSD/' + origin + '/' + destination + '/' + date);
   }
+
+  public updateSeats(count:number, j_class:string,train:any){
+    return this.http.put(this.API + '/updateSeats/' + count + '/' + j_class , train);
+  }
 }

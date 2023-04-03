@@ -1,79 +1,67 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TrainService } from '../Rest/train.service';
+import { trains } from '../Rest/trains';
 
 @Component({
   selector: 'app-all-trains',
   templateUrl: './all-trains.component.html',
   styleUrls: ['./all-trains.component.css']
 })
-export class AllTrainsComponent {
+export class AllTrainsComponent implements OnInit {
 
+  trainArr:trains[]=[];
+  
 
-  trains=[
-    {
-      "train_id" :101,
-      "train_name":"train_1",
-     "source_station":"Pune",
-      "destination_station":"Mumbai",
-      "departure_time":"10.00",
-      "arrival_time":"22:00", 
-     "no_of_seats":50,
-     
-     "no_of_available_AC":25,
-     "no_of_available_Seater":25,
-     " no_of_available_Sleeper":10
+  constructor(private trainServ:TrainService)
+  {
+    
+  } 
+  ngOnInit(): void {
+    this.trainServ.getTrain().subscribe(
+      (res)=>
+      {
+        this.trainArr=res;
+       
+          
+      },
+      (err)=>
+      { 
 
+      }
 
+    );  
+  }
+  display()
+  {
+    this.trainServ.getTrain().subscribe(
+      (res)=>
+      {
+        this.trainArr=res;
+       
+          
+      },
+      (err)=>
+      { 
 
-    },
-    {
-      "train_id" :101,
-      "train_name":"train_1",
-     "source_station":"Pune",
-      "destination_station":"Mumbai",
-      "departure_time":"10.00",
-      "arrival_time":"22:00", 
-     "no_of_seats":50,
-     
-     "no_of_available_AC":25,
-     "no_of_available_Seater":25,
-     " no_of_available_Sleeper":10
+      }
+    );
+  }
+  cancelTrain(train_id:number)
+  {
+      this.trainServ.cancelTrain(train_id).subscribe(
+        (resp: any)=>
+        {
+          console.log(resp);
+          this.display();
 
-
-
-    },
-    {
-      "train_id" :101,
-      "train_name":"train_1",
-     "source_station":"Pune",
-      "destination_station":"Mumbai",
-      "departure_time":"10.00",
-      "arrival_time":"22:00", 
-     "no_of_seats":50,
-     
-     "no_of_available_AC":25,
-     "no_of_available_Seater":25,
-     " no_of_available_Sleeper":10
-
-
-
-    },
-    {
-      "train_id" :101,
-      "train_name":"train_1",
-     "source_station":"Pune",
-      "destination_station":"Mumbai",
-      "departure_time":"10.00",
-      "arrival_time":"22:00", 
-     "no_of_seats":50,
-     
-     "no_of_available_AC":25,
-     "no_of_available_Seater":25,
-     " no_of_available_Sleeper":10
-
-
-
-    }
-
-  ];
+          
+        },(err: any)=>
+        {
+          console.log(err);
+          
+        }
+      );
+      location.reload();
+  }
 
 }

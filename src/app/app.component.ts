@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'railbook';
-  isAdmin:boolean=false;
+  isAdmin:boolean= false;
 }

@@ -64,7 +64,7 @@ export class BookTicketComponent {
     else if(this.j_Class == "Sleeper"){
       this.seats = this.booking_train.no_of_Sleeper;
     }
-    else{
+    else {
       this.seats = this.booking_train.no_of_Seater;
     }
 
@@ -84,6 +84,8 @@ export class BookTicketComponent {
     else{
       alert("Seats are unavaible in " + this.j_Class + " class.");
     }
+
+    alert(this.j_Class);
   }
 
   close(){
@@ -93,6 +95,8 @@ export class BookTicketComponent {
     this.pass1 = new Passenger("",0,"");
     this.pass2 = new Passenger("",0,"");
     this.pass3 = new Passenger("",0,"");
+    this.passeneger_array = [];
+    this.bookPass = [];
   }
 
 
@@ -101,42 +105,70 @@ export class BookTicketComponent {
   bookPass : number[] = [];
   ticket : any ;
   pass_id : number = 1;
+  valid:boolean = true;
+
+  validate(){
+    for(let i=0; i<this.no_Of_Passengers; i++){
+      if(this.passList[i].name==""){
+        this.valid = false;
+        return;
+      }
+      if(this.passList[i].gender==""){
+        this.valid = false;
+        return;
+      }
+      if(this.passList[i].age<=0){
+        this.valid = false;
+        return;
+      }
+    }
+  }
   
   book() {
    
-    this.bookPass = [];
-    for (let i = 0; i < this.no_Of_Passengers; i++) {
-      this.bookingServ.registerPassenger(this.passList[i]).subscribe(
-        (resp) => {
-          this.pass_id = +resp;
-          this.bookPass.push(this.pass_id);
-          
-          // Only create the Booking object when all passenger IDs are available
-          if (i == this.no_Of_Passengers-1) {
-            alert("Congratulation! your tocket is booked. \nYou have have booked ticket for : " + this.bookPass.length + " Passengers");
-            this.ticket = new Booking(
-              this.no_Of_Passengers,
-              this.j_Class,
-              1,
-              this.booking_train.train_id,
-              this.bookPass
-            );
-
-            this.bookingServ.registerBooking(this.ticket).subscribe(
-              (resp) => {
-                console.log(resp);
-              },
-              (Err) => {
-                console.log(Err);
-              }
-            );
-
+    if(this.valid){
+      for (let i = 0; i < this.no_Of_Passengers; i++) {
+        this.bookingServ.registerPassenger(this.passList[i]).subscribe(
+          (resp) => {
+            this.pass_id = +resp;
+            this.bookPass.push(this.pass_id);
+            
+            // Only create the Booking object when all passenger IDs are available
+            if (i == this.no_Of_Passengers-1) {
+              alert("Congratulation! your tocket is booked. \nYou have have booked ticket for : " + this.bookPass.length + " Passengers");
+              this.ticket = new Booking(
+                this.no_Of_Passengers,
+                this.j_Class,
+                1,
+                this.booking_train.train_id,
+                this.bookPass
+              );
+  
+              this.bookingServ.registerBooking(this.ticket).subscribe(
+                (resp) => {
+                  console.log(resp);
+                },
+                (Err) => {
+                  console.log(Err);
+                }
+              );
+  
+              this.bookingServ.updateSeats(this.bookPass.length,this.j_Class,this.booking_train).subscribe((resp)=>{
+                this.search();
+              });
+              
+            }
+          },
+          (Err) => {
+            console.log(Err);
           }
-        },
-        (Err) => {
-          console.log(Err);
-        }
-      );
+        );
+      }
+  
+      this.nextClicked = false;
+    }
+    else{
+        alert("Please give valid passenger details.")
     }
   }
 

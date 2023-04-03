@@ -1,5 +1,5 @@
-
-<body>
+<body id="form">
+ 
   <ng-container
     *ngIf="nextClicked == false; then displayFirstForm; else displaySecondForm"
   >
@@ -21,6 +21,7 @@
           type="text"
           class="form-control"
           placeholder="Enter Train Number"
+          [(ngModel)]="train_id"
         />
       </div>
       <div style="width: 90%">
@@ -30,11 +31,12 @@
           type="text"
           class="form-control"
           placeholder="Enter Train Name"
+          [(ngModel)]="train_name"
         />
       </div>
       <div style="width: 90%">
         <label style="margin-bottom: 5px">From</label>
-        <select class="form-control" style="width: 100%">
+        <select class="form-control" style="width: 100%" [(ngModel)]="source_station">
           <option>Pune</option>
           <option>Hyderabad</option>
           <option>Goa</option>
@@ -43,7 +45,7 @@
       </div>
       <div style="width: 90%">
         <label style="margin-bottom: 5px">To</label>
-        <select class="form-control" style="width: 100%">
+        <select class="form-control" style="width: 100%" [(ngModel)]="destination_station">
           <option>Pune</option>
           <option>Hyderabad</option>
           <option>Goa</option>
@@ -52,11 +54,11 @@
       </div>
       <div style="width: 90%">
         <label for="appt">Arrival time</label><br />
-        <input type="time" class="form-control" value="22:00" />
+        <input type="time" class="form-control" value="22:00"   [(ngModel)]="arrival_time"/>
       </div>
       <div style="width: 90%">
         <label for="appt">Departure time</label><br />
-        <input type="time" class="form-control" value="22:00" />
+        <input type="time" class="form-control" value="22:00"  [(ngModel)]="departure_time"/>
       </div>
    
       <button type="button" class="btn btn-primary" (click)="(nextClick())">
@@ -75,7 +77,7 @@
       "
     >
     <div style="width: 90%">
-        <label>Date</label><br />
+        <label>Departure Date</label><br />
         <input
           type="date"
           class="form-control"
@@ -84,21 +86,23 @@
           min="2017-01-01"
           max="2019-01-01"
           style="width: 100%"
+          [(ngModel)]="departure_date"
         />
       </div>
       <div style="width: 90%">
-        <label style="margin-bottom: 5px">Total seats</label>
-        <br />
+        <label>arrival Date</label><br />
         <input
-          type="number"
+          type="date"
           class="form-control"
-          placeholder="Enter Number of seats"
-          min="1"
-          max="60"
-          value="60"
-
+          name="date"
+          value="2018-01-01"
+          min="2017-01-01"
+          max="2019-01-01"
+          style="width: 100%"
+          [(ngModel)]="arrival_date"
         />
       </div>
+    
       <div style="width: 90%">
         <label style="margin-bottom: 5px">AC seats</label>
         <br />
@@ -109,6 +113,7 @@
         min="1"
         max="60"
         value="60"
+        [(ngModel)]="no_of_AC"
         />
       </div>
       <div style="width: 90%">
@@ -121,6 +126,7 @@
         min="1"
         max="60"
         value="60"
+        [(ngModel)]="no_of_Seater"
         />
       </div>
       <div style="width: 90%">
@@ -133,6 +139,7 @@
         min="1"
         max="60"
         value="60"
+        [(ngModel)]="no_of_Sleeper"
         />
       </div>
   
@@ -140,7 +147,7 @@
       
       <div style="display: flex; justify-content: space-evenly; width: 90%;">
         <button type="button" class="btn btn-primary" style="margin-left: 0px;" (click)="back()"><-Back</button>
-        <button type="button" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-primary" (click)="insertTrain()">Add</button>
       </div>
       
     </div>
