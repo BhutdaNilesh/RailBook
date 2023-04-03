@@ -1,12 +1,4 @@
-// import { Injectable } from '@angular/core';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class TrainService {
-
-//   constructor() { }
-// }
 
 
 import { Injectable } from '@angular/core';

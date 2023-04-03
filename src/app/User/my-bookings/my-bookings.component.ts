@@ -46,14 +46,8 @@ export class MyBookingsComponent implements OnInit {
           }
           this.pass.push(passData); // push the passData array here
         }
-<<<<<<< Updated upstream
         console.log(this.pass)
         console.log(this.newBooking)
-=======
-        console.log(this.pass);
-        console.log(this.newBooking);
-        console.log(this.train)
->>>>>>> Stashed changes
       },
       
       (err) => {

@@ -3,11 +3,7 @@
   <!-- [class.cancelled]="booking.cancelled -->
   <li *ngFor="let booking of newBooking; let i=index" class="booking-item">
     <div class="booking-info">
-<<<<<<< Updated upstream
-      <div class="booking-name">Train Name: {{ train[i].name }}</div>
-=======
-      <div class="booking-name">{{ train[i].train_name }}</div>
->>>>>>> Stashed changes
+      <div class="booking-name">Train Name: {{ train[i].train_name }}</div>
       <div class="booking-destination">{{ train[i].source_station }} to {{train[i].destination_station}}</div>
       <div>Departure Date:  {{train[i].departure_date}}</div>
 
