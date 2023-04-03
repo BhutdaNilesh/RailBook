@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookingService } from '../Rest/booking.service';
 import { HttpClient } from '@angular/common/http';
 import { Booking } from '../Rest/booking';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-bookings',
@@ -15,7 +16,8 @@ export class MyBookingsComponent implements OnInit {
 
   train: any[] = [];
 
-  constructor(private bookingServ: BookingService) {}
+  constructor(private bookingServ: BookingService,
+    private route: Router) {}
 
   ngOnInit(): void {
     this.bookingServ.getAllBooking().subscribe(
@@ -43,6 +45,8 @@ export class MyBookingsComponent implements OnInit {
           }
           this.pass.push(passData); // push the passData array here
         }
+        console.log(this.pass)
+        console.log(this.newBooking)
       },
       
       (err) => {
@@ -56,16 +60,20 @@ export class MyBookingsComponent implements OnInit {
   view(booking: any, index: number) {
     this.book = booking;
     this.ind = index;
-    // console.log(this.pass[this.ind])
+
+    console.log(this.book)
   }
 
   cancelTicket() {
     const bookingId = this.book.booking_id;
     const confirmDelete = confirm(`Do you want to delete ticket with id: ${bookingId}?`);
+
     if (confirmDelete) {
       this.bookingServ.deleteBooking(bookingId).subscribe(
         (resp: any) => {
           // handle success response if needed
+          this.route.navigateByUrl('/MyBookings')
+          location.reload()
           console.log(`Booking with id ${bookingId} was deleted successfully.`);
         },
         (err) => {

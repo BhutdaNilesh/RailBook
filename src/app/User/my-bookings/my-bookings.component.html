@@ -3,8 +3,9 @@
   <!-- [class.cancelled]="booking.cancelled -->
   <li *ngFor="let booking of newBooking; let i=index" class="booking-item">
     <div class="booking-info">
-      <div class="booking-name">{{ train[i].name }}</div>
+      <div class="booking-name">Train Name: {{ train[i].name }}</div>
       <div class="booking-destination">{{ train[i].source_station }} to {{train[i].destination_station}}</div>
+      <div>Departure Date:  {{train[i].departure_date}}</div>
 
     </div>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal"
@@ -32,6 +33,7 @@
         <p>Destination: {{ train[ind].destination_station }}</p>
         <p>Date: {{ train[ind].departure_date }}</p>
         <p>Time: {{ train[ind].departure_time }}</p>
+        <!-- <p>Journey Class: {{ train[ind].journey_class }}</p> -->
         <hr>
         <h6>Passenger Details:</h6>
 
