@@ -1,0 +1,342 @@
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+          class="img-fluid"
+          alt="Phone image"
+        />
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <ng-container
+          *ngIf="
+            roleServ.isAdmin==false;
+            then displayUserPanel;
+            else displayAdminPanel
+          "
+        ></ng-container>
+        <ng-template #displayUserPanel>
+          <ng-container
+            *ngIf="
+              isRegistered == true;
+              then displayLogin;
+              else displayRegister
+            "
+          >
+          </ng-container>
+          <ng-template #displayLogin>
+          
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form1Example13"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  id="form1Example13"
+                  class="form-control form-control-lg"
+                  placeholder="Enter Email Address"
+                  [(ngModel)]="login_email"
+                />
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form1Example23">Password</label>
+                <input
+                  type="password"
+                  id="form1Example23"
+                  class="form-control form-control-lg"
+                  placeholder="Enter Password"
+                  [(ngModel)]="login_pass"
+                />
+              </div>
+
+              <div
+                class="d-flex justify-content-around align-items-center mb-4"
+              >
+                <!-- Checkbox -->
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="form1Example3"
+                    checked
+                  />
+                  <label class="form-check-label" for="form1Example3">
+                    Remember me
+                  </label>
+                </div>
+                <a href="#!" (click)="goToAdminPanel()">Are you Admin?</a>
+              </div>
+
+              <div style="display: flex; justify-content: space-evenly;">
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="loginUser()">
+                    Sign in
+                </button>
+                
+              </div>
+              <div class="divider d-flex align-items-center my-4">
+                <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+              </div>
+
+              <a href="#!" (click)="goToRegister()">Don't have account? Create One</a>
+      
+          </ng-template>
+          <ng-template #displayRegister>
+        
+              <div
+                style="
+                  
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+                  height: 500px;
+                  width: 80%;
+                  align-items: center;
+                "
+              >
+                <!-- Name input -->
+                <div class="form-outline mb-4" id="form-item">
+                  <label class="form-label" for="form1Example13">Name</label>
+                  <input
+                    type="text"
+                    id="form1Example13"
+                    class="form-control"
+                    placeholder="Enter Name"
+                    [(ngModel)]="username"
+                    
+                  />
+                </div>
+                <!-- Mobile input -->
+                <div class="form-outline mb-4" id="form-item">
+                  <label class="form-label" for="form1Example13">Phone Number</label>
+                  <input
+                    type="text"
+                    id="form1Example13"
+                    class="form-control"
+                    placeholder="Enter Mobile No"
+                    [(ngModel)]="phone_number"
+                    
+                  />
+                </div>
+                <!-- Email input -->
+                <div class="form-outline mb-4" id="form-item">
+                  <label class="form-label" for="form1Example13"
+                    >Email address</label
+                  >
+                  <input
+                    type="email"
+                    id="form1Example13"
+                    class="form-control"
+                    placeholder="Enter Email Address"
+                    [(ngModel)]="email"
+                   
+                  />
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4" id="form-item">
+                  <label class="form-label" for="form1Example23"
+                    >Password</label
+                  >
+                  <input
+                    type="password"
+                    id="form1Example23"
+                    class="form-control"
+                    placeholder="Enter Password"
+                    [(ngModel)]="password"
+                    
+                  />
+                </div>
+
+                <!-- Confirm Password input -->
+                <div class="form-outline mb-4" id="form-item">
+                  <label class="form-label" for="form1Example23"
+                    >Confirm Password</label
+                  >
+                  <input
+                    type="password"
+                    id="form1Example23"
+                    class="form-control"
+                    placeholder="Enter Same Password as Above"
+                  
+                  />
+                </div>
+
+                <div id="form-item" style="margin-top: 15px; display: flex ; justify-content: space-around;"
+                >
+                    <button type="button" class="btn btn-primary" (click)="RegisterUser()">Register</button>
+                    <a href="#!" (click)="goToLogin()">Login</a>
+                </div>
+
+               
+              </div>
+            
+          </ng-template>
+        </ng-template>
+        <ng-template #displayAdminPanel>
+          <ng-container
+            *ngIf="
+              isRegistered == true;
+              then displayLogin;
+              else displayRegister
+            "
+          >
+          </ng-container>
+          <ng-template #displayLogin>
+            <h3>Admin Panel</h3>
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form1Example13"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  id="form1Example13"
+                  class="form-control form-control-lg"
+                  placeholder="Enter Email Address"
+                  [(ngModel)]="login_email"
+                />
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form1Example23">Password</label>
+                <input
+                  type="password"
+                  id="form1Example23"
+                  class="form-control form-control-lg"
+                  placeholder="Enter Password"
+                  [(ngModel)]="login_pass"
+                />
+              </div>
+
+              <div
+                class="d-flex justify-content-around align-items-center mb-4"
+              >
+                <!-- Checkbox -->
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="form1Example3"
+                    checked
+                  />
+                  <label class="form-check-label" for="form1Example3">
+                    Remember me
+                  </label>
+                </div>
+                <a href="#! " (click)="goToUser()">Are you User?</a>
+              </div>
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="loginAdmin()">
+                Sign in
+              </button>
+
+              <div class="divider d-flex align-items-center my-4">
+                <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+              </div>
+              <a href="#! " (click)="goToRegister()">Don't have an account? Create One</a>
+             
+            
+          </ng-template>
+          <ng-template #displayRegister>
+            
+            <div
+            style="
+             
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              height: 500px;
+              width: 80%;
+              align-items: center;
+            "
+          >
+          <h3>Admin Registration </h3>
+            <!-- Name input -->
+            <div class="form-outline mb-4" id="form-item">
+              <label class="form-label" for="form1Example13">Name</label>
+              <input
+                type="text"
+                id="form1Example13"
+                class="form-control form-control-lg"
+                placeholder="Enter Name"
+                [(ngModel)]="username"
+                
+              />
+            </div>
+            <!-- Mobile input -->
+            <div class="form-outline mb-4" id="form-item">
+              <label class="form-label" for="form1Example13">Mobile Number</label>
+              <input
+                type="text"
+                id="form1Example13"
+                class="form-control form-control-lg"
+                placeholder="Enter Mobile No"
+                [(ngModel)]="phone_number"
+                
+              />
+            </div>
+            <!-- Email input -->
+            <div class="form-outline mb-4" id="form-item">
+              <label class="form-label" for="form1Example13"
+                >Email address</label
+              >
+              <input
+                type="email"
+                id="form1Example13"
+                class="form-control form-control-lg"
+                placeholder="Enter Email Address"
+                [(ngModel)]="email"
+               
+              />
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4" id="form-item">
+              <label class="form-label" for="form1Example23"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="form1Example23"
+                class="form-control form-control-lg"
+                placeholder="Enter Password"
+                [(ngModel)]="password"
+                
+              />
+            </div>
+
+            <!-- Confirm Password input -->
+            <div class="form-outline mb-4" id="form-item">
+              <label class="form-label" for="form1Example23"
+                >Confirm Password</label
+              >
+              <input
+                type="password"
+                id="form1Example23"
+                class="form-control form-control-lg"
+                placeholder="Enter Same Password as Above"
+              
+              />
+            </div>
+
+            <div id="form-item" style="display: flex; justify-content: space-around;">
+                <button type="button" class="btn btn-primary" (click)="RegisterUser()">Register</button>
+                <a href="#!" (click)="goToLogin()">Login</a>
+
+            </div>
+          </div>
+          </ng-template>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</section>
