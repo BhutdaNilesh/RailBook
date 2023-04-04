@@ -47,13 +47,14 @@ export class ManageTrainsComponent {
       this.no_of_Seater,
       this.no_of_Sleeper).subscribe( (resp) => {
         console.log(resp);
+        alert("Train has been added successfully!!");
         
       },
       (err) => {
         console.log(err);
       });
     
-      alert("Train has been added successfully!!");
+      
       location.reload();
     
   }

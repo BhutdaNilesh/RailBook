@@ -4,6 +4,7 @@ import { Users } from '../Rest/Users';
 import { Router } from '@angular/router'; 
 import { RoleDefineService } from 'src/app/role-define.service';
 import { AuthServiceService } from 'src/app/RestAuth/auth-service.service';
+import { Admin } from '../Rest/Admin';
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
@@ -59,6 +60,8 @@ export class LogInComponent {
       .subscribe(
         (resp) => {
           console.log(resp);
+          alert("Registration Succesfull!");
+          this.route.navigateByUrl("/LogIn")
         },
         (err) => {
           console.log(err);
@@ -68,11 +71,13 @@ export class LogInComponent {
   RegisterAdmin() {
     this.loginServ
       .registerAdmin(
-        new Users(this.email, this.phone_number, this.username, this.password)
+        new Admin(this.email, this.phone_number, this.username, this.password)
       )
       .subscribe(
         (resp) => {
           console.log(resp);
+          alert("Registration Succesfull!");
+          this.route.navigateByUrl("/LogIn")
         },
         (err) => {
           console.log(err);
@@ -97,7 +102,7 @@ export class LogInComponent {
           this.route.navigateByUrl("/Home")
       }
       else{
-
+        alert("Wrong Credentials");
       }
     },
     (err)=>{
@@ -117,10 +122,11 @@ export class LogInComponent {
         
         this.authserv.login();
         
-          // this.roleServ.changeRole()
+         
           this.route.navigateByUrl("/AllTrains")
       }
       else{
+        alert("Wrong Credentials");
 
       }
     },

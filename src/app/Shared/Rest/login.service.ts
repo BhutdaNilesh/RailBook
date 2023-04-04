@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Users } from './Users';
+import { Admin } from './Admin';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class LoginService {
     
     return this.http.post(this.API+'/registerUser',user);
   }
-  public registerAdmin(user:Users)
+  public registerAdmin(user:Admin)
   {
 
     
