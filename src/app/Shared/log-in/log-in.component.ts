@@ -45,6 +45,7 @@ export class LogInComponent {
   // }
   goToUser()
   {
+    this.roleServ.changeRole();
     this.isAdmin=false;
   }
 

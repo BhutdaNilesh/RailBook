@@ -12,8 +12,8 @@ export class BookingService {
 
   constructor(private http: HttpClient) {}
 
-  public getAllBooking() {
-    return this.http.get(this.API + '/getAllBookings');
+  public getAllBooking(id:number) {
+    return this.http.get(this.API + '/getBookingsByid/' + id);
   }
 
   public getPassenger(id: number) {

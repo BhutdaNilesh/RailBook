@@ -3,6 +3,7 @@ import { BookingService } from '../Rest/booking.service';
 import { HttpClient } from '@angular/common/http';
 import { Booking } from '../Rest/booking';
 import { Router } from '@angular/router';
+import { RoleDefineService } from 'src/app/role-define.service';
 
 @Component({
   selector: 'app-my-bookings',
@@ -17,10 +18,10 @@ export class MyBookingsComponent implements OnInit {
   train: any[] = [];
 
   constructor(private bookingServ: BookingService,
-    private route: Router) {}
+    private route: Router, private userServ:RoleDefineService) {}
 
   ngOnInit(): void {
-    this.bookingServ.getAllBooking().subscribe(
+    this.bookingServ.getAllBooking(this.userServ.loggedId).subscribe(
       (resp: any) => {
         // console.log(resp);
         this.newBooking = resp;
