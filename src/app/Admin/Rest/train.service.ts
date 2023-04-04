@@ -48,6 +48,9 @@ export class TrainService {
      
        return this.http.delete(this.API+'/cancel/'+id)
    }
+
+
+   
 }
 
 

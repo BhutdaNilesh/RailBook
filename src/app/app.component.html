@@ -1,10 +1,15 @@
-<ng-container *ngIf="isAdmin == true; then AdminPanel; else UserPanel">
+<ng-container *ngIf="roleServ.isAdmin == true; then AdminPanel; else UserPanel">
 </ng-container>
 <ng-template #AdminPanel>
 
 <nav class="navbar navbar-dark bg-dark mb-7" >
   <div class="container">
     <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/LogIn"
+          >LogIn
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" routerLink="/Home"
           >Home
@@ -36,6 +41,11 @@
   <nav class="navbar navbar-dark bg-dark mb-7">
     <div class="container">
       <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/LogIn"
+            >LogIn
+          </a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="/Home"
             >Home

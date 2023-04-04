@@ -2,6 +2,7 @@ import { Component, NgIterable } from '@angular/core';
 import { Passenger } from '../Rest/passenger';
 import { BookingService } from '../Rest/booking.service';
 import { Booking } from './booking';
+import { RoleDefineService } from 'src/app/role-define.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { Booking } from './booking';
 })
 export class BookTicketComponent {
 
-  constructor(private bookingServ : BookingService) {}
+  constructor(private bookingServ : BookingService,private getUserIdServ:RoleDefineService) {}
 
   origin : any;
   destination : any;
@@ -139,7 +140,7 @@ export class BookTicketComponent {
               this.ticket = new Booking(
                 this.no_Of_Passengers,
                 this.j_Class,
-                1,
+                this.getUserIdServ.loggedId,
                 this.booking_train.train_id,
                 this.bookPass
               );

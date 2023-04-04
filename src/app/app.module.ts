@@ -11,6 +11,7 @@ import { MyBookingsComponent } from './User/my-bookings/my-bookings.component';
 import { HomeComponent } from './Shared/home/home.component';
 import { AllTrainsComponent } from './Admin/all-trains/all-trains.component';
 import { BookingService } from './User/Rest/booking.service';
+import { LogInComponent } from './Shared/log-in/log-in.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { BookingService } from './User/Rest/booking.service';
     MyBookingsComponent,
     HomeComponent,
     AllTrainsComponent,
+    LogInComponent,
     
   ],
   imports: [
