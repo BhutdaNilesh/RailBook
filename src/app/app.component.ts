@@ -14,6 +14,8 @@ export class AppComponent implements OnChanges {
   {
 
   }
+
+  logInStatus : string = "LogIn";
   isAdmin:boolean= this.roleServ.isAdmin;
   ngOnChanges(changes: SimpleChanges): void {
     console.log("on change call");

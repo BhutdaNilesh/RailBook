@@ -30,7 +30,7 @@ export class BookTicketComponent {
       }
     );
 
-    console.log(this.searched_trains);
+    // console.log(this.searched_trains);
   }
 
   trains = [
@@ -40,7 +40,7 @@ export class BookTicketComponent {
 
   
 
-  booking_train : any = this.trains[0] ;
+  booking_train : any = this.trains[0];
 
   bookNow(train:any){
     this.booking_train = train;
@@ -86,7 +86,7 @@ export class BookTicketComponent {
       alert("Seats are unavaible in " + this.j_Class + " class.");
     }
 
-    alert(this.j_Class);
+    // alert(this.j_Class);
   }
 
   close(){
@@ -106,28 +106,28 @@ export class BookTicketComponent {
   bookPass : number[] = [];
   ticket : any ;
   pass_id : number = 1;
-  valid:boolean = true;
+  // valid:boolean = true;
 
   validate(){
     for(let i=0; i<this.no_Of_Passengers; i++){
       if(this.passList[i].name==""){
-        this.valid = false;
-        return;
+        return false;
       }
       if(this.passList[i].gender==""){
-        this.valid = false;
-        return;
+        // this.valid = false;
+        return false;
       }
       if(this.passList[i].age<=0){
-        this.valid = false;
-        return;
+        // this.valid = false;
+        return false;
       }
     }
+    return true;
   }
   
   book() {
    
-    if(this.valid){
+    if(this.validate()){
       for (let i = 0; i < this.no_Of_Passengers; i++) {
         this.bookingServ.registerPassenger(this.passList[i]).subscribe(
           (resp) => {
@@ -135,7 +135,8 @@ export class BookTicketComponent {
             this.bookPass.push(this.pass_id);
             
             // Only create the Booking object when all passenger IDs are available
-            if (i == this.no_Of_Passengers-1) {
+            if (this.bookPass.length == this.no_Of_Passengers) {
+              console.log(this.bookPass.length);
               alert("Congratulation! your tocket is booked. \nYou have have booked ticket for : " + this.bookPass.length + " Passengers");
               this.ticket = new Booking(
                 this.no_Of_Passengers,

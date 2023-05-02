@@ -16,14 +16,10 @@ export class LoginService {
 
   public registerUser(user:Users)
   {
-
-    
     return this.http.post(this.API+'/registerUser',user);
   }
   public registerAdmin(user:Admin)
   {
-
-    
     return this.http.post(this.API+'/registerAdmin',user);
   }
 
