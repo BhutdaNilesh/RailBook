@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Booking } from '../Rest/booking';
 import { Router } from '@angular/router';
 import { RoleDefineService } from 'src/app/role-define.service';
+import { forkJoin } from 'rxjs';
+import { Train } from '../Rest/train';
 
 @Component({
   selector: 'app-my-bookings',
@@ -15,7 +17,7 @@ export class MyBookingsComponent implements OnInit {
   pass: any[] = [];
   passData: any[] = [];
 
-  train: any[] = [];
+  train: Train[] = [];
 
   constructor(private bookingServ: BookingService,
     private route: Router, private userServ:RoleDefineService) {}
@@ -33,7 +35,7 @@ export class MyBookingsComponent implements OnInit {
     
           this.bookingServ.getTrain(trainId).subscribe((train_data: any) => {
             this.train.push(train_data);
-            console.log(train_data);
+            // console.log(train_data);
           });
     
           let passData: any[] = []; // move the initialization here
@@ -47,8 +49,8 @@ export class MyBookingsComponent implements OnInit {
           }
           this.pass.push(passData); // push the passData array here
         }
-        console.log(this.pass)
-        console.log(this.newBooking)
+        // console.log(this.pass)
+        // console.log(this.newBooking)
       },
       
       (err) => {
@@ -63,7 +65,7 @@ export class MyBookingsComponent implements OnInit {
     this.book = booking;
     this.ind = index;
 
-    console.log(this.book)
+    // console.log(this.book)
   }
 
   cancelTicket() {

@@ -114,11 +114,9 @@ export class BookTicketComponent {
         return false;
       }
       if(this.passList[i].gender==""){
-        // this.valid = false;
         return false;
       }
       if(this.passList[i].age<=0){
-        // this.valid = false;
         return false;
       }
     }
@@ -128,45 +126,50 @@ export class BookTicketComponent {
   book() {
    
     if(this.validate()){
+      let promises = [];
+
       for (let i = 0; i < this.no_Of_Passengers; i++) {
+        const promise = new Promise<void>((resolve, reject) => {
         this.bookingServ.registerPassenger(this.passList[i]).subscribe(
-          (resp) => {
-            this.pass_id = +resp;
-            this.bookPass.push(this.pass_id);
-            
-            // Only create the Booking object when all passenger IDs are available
-            if (this.bookPass.length == this.no_Of_Passengers) {
-              console.log(this.bookPass.length);
-              alert("Congratulation! your tocket is booked. \nYou have have booked ticket for : " + this.bookPass.length + " Passengers");
-              this.ticket = new Booking(
-                this.no_Of_Passengers,
-                this.j_Class,
-                this.getUserIdServ.loggedId,
-                this.booking_train.train_id,
-                this.bookPass
-              );
-  
-              this.bookingServ.registerBooking(this.ticket).subscribe(
-                (resp) => {
-                  console.log(resp);
-                },
-                (Err) => {
-                  console.log(Err);
-                }
-              );
-  
-              this.bookingServ.updateSeats(this.bookPass.length,this.j_Class,this.booking_train).subscribe((resp)=>{
-                this.search();
-              });
-              
-            }
-          },
-          (Err) => {
-            console.log(Err);
-          }
+        (resp) => {
+          this.pass_id = +resp;
+          this.bookPass.push(this.pass_id);
+          resolve();
+        },
+        (Err) => {
+          reject(Err);
+        }
         );
+        });
+        promises.push(promise);
       }
-  
+
+  Promise.all(promises).then(() => {
+    alert("Congratulation! your tocket is booked. \nYou have have booked ticket for : " + this.bookPass.length + " Passengers");
+      this.ticket = new Booking(
+        this.no_Of_Passengers,
+        this.j_Class,
+        this.getUserIdServ.loggedId,
+        this.booking_train.train_id,
+        this.bookPass
+      );
+
+    this.bookingServ.registerBooking(this.ticket).subscribe(
+      (resp) => {
+        console.log(resp);
+      },
+      (Err) => {
+        console.log(Err);
+      }
+    );
+
+    this.bookingServ.updateSeats(this.bookPass.length,this.j_Class,this.booking_train).subscribe((resp)=>{
+      this.search();
+    });
+    }).catch((err) => {
+      console.log(err);
+    });
+
       this.nextClicked = false;
     }
     else{

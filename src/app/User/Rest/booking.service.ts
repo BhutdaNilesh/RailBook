@@ -8,35 +8,35 @@ import { Booking } from '../book-ticket/booking';
   providedIn: 'root',
 })
 export class BookingService {
-  API = 'http://localhost:9595';
+  API = 'http://localhost:8989';
 
   constructor(private http: HttpClient) {}
 
   public getAllBooking(id:number) {
-    return this.http.get(this.API + '/getBookingsByid/' + id);
+    return this.http.get(this.API + '/booking/getBookingsByid/' + id);
   }
 
   public getPassenger(id: number) {
-    return this.http.get(this.API + '/getPasseneger/' + id);
+    return this.http.get(this.API + '/passenger/getPasseneger/' + id);
   }
 
   public getTrain(id: number) {
-    return this.http.get(this.API + '/getTrain/' + id);
+    return this.http.get(this.API + '/train/getTrain/' + id);
   }
 
   public deleteBooking(id:number){
-     return this.http.delete(this.API + '/deleteTicket/' + id)
+     return this.http.delete(this.API + '/booking/deleteTicket/' + id)
   }
 
   // Storing passenger data
   public registerPassenger(pass : Passenger){
-    let strURL : string = this.API + '/registerPassenger' ;
+    let strURL : string = this.API + '/passenger/registerPassenger' ;
     return this.http.post(strURL, pass);
   }
 
   // stroing ticket data
   public registerBooking(ticket : Booking){
-    let strURL : string = this.API + '/bookTicket' ;
+    let strURL : string = this.API + '/booking/bookTicket' ;
     
     console.log(ticket);
     
@@ -44,10 +44,10 @@ export class BookingService {
   }
 
   public searchTrains(origin:string, destination:string, date:any){
-    return this.http.get(this.API + '/getTrainSD/' + origin + '/' + destination + '/' + date);
+    return this.http.get(this.API + '/train/getTrainSD/' + origin + '/' + destination + '/' + date);
   }
 
   public updateSeats(count:number, j_class:string,train:any){
-    return this.http.put(this.API + '/updateSeats/' + count + '/' + j_class , train);
+    return this.http.put(this.API + '/train/updateSeats/' + count + '/' + j_class , train);
   }
 }

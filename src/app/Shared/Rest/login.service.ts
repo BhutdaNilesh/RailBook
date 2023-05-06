@@ -8,7 +8,7 @@ import { Admin } from './Admin';
 })
 export class LoginService {
 
-  API='http://localhost:9595';
+  API='http://localhost:8989';
 
 
   constructor(private http:HttpClient) { }
@@ -16,20 +16,20 @@ export class LoginService {
 
   public registerUser(user:Users)
   {
-    return this.http.post(this.API+'/registerUser',user);
+    return this.http.post(this.API+'/user/registerUser',user);
   }
   public registerAdmin(user:Admin)
   {
-    return this.http.post(this.API+'/registerAdmin',user);
+    return this.http.post(this.API+'/admin/registerAdmin',user);
   }
 
   public loginUser(email :String ,pass:String)
   {
-    return this.http.get(this.API+"/loginUser/"+email+"/"+pass);
+    return this.http.get(this.API+"/user/loginUser/"+email+"/"+pass);
   }
 
   public loginAdmin(email :String ,pass:String)
   {
-    return this.http.get(this.API+"/loginAdmin/"+email+"/"+pass);
+    return this.http.get(this.API+"/admin/loginAdmin/"+email+"/"+pass);
   }
 }

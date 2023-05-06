@@ -72,13 +72,12 @@
 }
 
 .modal-footer button {
-  background-color: #007bff;
+  background-color: red;
   color: #fff;
 }
 
 .modal-footer button:hover {
-  background-color: #0062cc;
-  color: #fff;
+  color: black;
 }
 
 

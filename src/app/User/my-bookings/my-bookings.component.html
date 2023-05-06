@@ -2,7 +2,7 @@
 <ul class="booking-list">
   <!-- [class.cancelled]="booking.cancelled -->
   <li *ngFor="let booking of newBooking; let i=index" class="booking-item">
-    <div class="booking-info">
+    <div class="booking-info" *ngIf="train[i]">
       <div class="booking-name">Train Name: {{ train[i].train_name }}</div>
       <div class="booking-destination">{{ train[i].source_station }} to {{train[i].destination_station}}</div>
       <div>Departure Date:  {{train[i].departure_date}}</div>
@@ -11,7 +11,6 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal"
       (click)="view(booking,i)"> View Booking
       details </button>
-
   </li>
 </ul>
 
@@ -26,7 +25,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
       </div>
-      <div class="modal-body">
+      <div class="modal-body" *ngIf="train[ind]">
         <h6>Journey Details:</h6>
         <p>Train Name: {{ train[ind].train_name }}</p>
         <p>Source: {{ train[ind].source_station}} </p>
@@ -47,7 +46,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelTicket()">Cancel</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="cancelTicket()">Cancel</button>
       </div>
     </div>
   </div>
