@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class TrainService {
 
 
-  API='http://localhost:9595';
+  API='http://localhost:8989';
   Train:trains | undefined;
     constructor(private http:HttpClient) {
 
@@ -34,17 +34,17 @@ export class TrainService {
       no_of_Sleeper)
 
 
-      return this .http.post(this.API+'/addTrain',this.Train);
+      return this .http.post(this.API+'/train/addTrain',this.Train);
    }
 
 
    public getTrain()
    {
-      return this.http.get<trains[]>(this.API+'/getTrains')
+      return this.http.get<trains[]>(this.API+'/train/getTrains')
    }
    public cancelTrain(id:number)
    {
-      console.log(this.API+'/cancel/'+id);
+      console.log(this.API+'/train/cancel/'+id);
      
        return this.http.delete(this.API+'/cancel/'+id)
    }
