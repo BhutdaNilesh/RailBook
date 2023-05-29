@@ -86,7 +86,6 @@ export class BookTicketComponent {
       alert("Seats are unavaible in " + this.j_Class + " class.");
     }
 
-    // alert(this.j_Class);
   }
 
   close(){
@@ -106,7 +105,14 @@ export class BookTicketComponent {
   bookPass : number[] = [];
   ticket : any ;
   pass_id : number = 1;
-  // valid:boolean = true;
+  
+
+
+  validateName(i:number){
+      if(this.passList[i].name==""){
+        alert("Please enter valid name");
+      }
+  }
 
   validate(){
     for(let i=0; i<this.no_Of_Passengers; i++){
@@ -145,7 +151,7 @@ export class BookTicketComponent {
       }
 
   Promise.all(promises).then(() => {
-    alert("Congratulation! your tocket is booked. \nYou have have booked ticket for : " + this.bookPass.length + " Passengers");
+    alert("Congratulation! your ticket is booked. \nYou have have booked ticket for : " + this.bookPass.length + " Passengers");
       this.ticket = new Booking(
         this.no_Of_Passengers,
         this.j_Class,

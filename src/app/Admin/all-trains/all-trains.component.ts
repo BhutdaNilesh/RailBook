@@ -62,7 +62,6 @@ export class AllTrainsComponent implements OnInit {
         }
       );
 
-      // location.reload();
       this.display();
   }
 

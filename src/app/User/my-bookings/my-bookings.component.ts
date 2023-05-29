@@ -8,7 +8,7 @@ import { forkJoin } from 'rxjs';
 import { Location } from '@angular/common';
 import { Train } from '../Rest/train';
 
-import * as bootstrap from 'bootstrap';
+
 declare var $: any;
 
 @Component({

@@ -131,7 +131,7 @@
                     <form style="justify-content: space-between; display: flex;">
                       <div >
                         <label for="passengerName">Name: </label>
-                        <input type="text" id="passengerName" name="passengerName" [(ngModel)]="ind.name" required>
+                        <input type="text" id="passengerName" name="passengerName" (blur)="validateName(i)" [(ngModel)]="ind.name" required>
                       </div>
                       <div>
                         <label for="departureStation">Gender: </label>
