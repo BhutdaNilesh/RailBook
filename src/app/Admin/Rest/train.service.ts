@@ -46,7 +46,7 @@ export class TrainService {
    {
       console.log(this.API+'/train/cancel/'+id);
      
-       return this.http.delete(this.API+'/cancel/'+id)
+       return this.http.delete(this.API+'/train/cancel/'+id)
    }
 
 

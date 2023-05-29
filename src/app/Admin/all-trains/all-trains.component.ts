@@ -15,6 +15,7 @@ export class AllTrainsComponent implements OnInit {
   constructor(private trainServ:TrainService)
   {
     
+    
   } 
   ngOnInit(): void {
     this.trainServ.getTrain().subscribe(
@@ -37,8 +38,7 @@ export class AllTrainsComponent implements OnInit {
       (res)=>
       {
         this.trainArr=res;
-       
-          
+        
       },
       (err)=>
       { 
@@ -61,7 +61,9 @@ export class AllTrainsComponent implements OnInit {
           
         }
       );
-      location.reload();
+
+      // location.reload();
+      this.display();
   }
 
 }
